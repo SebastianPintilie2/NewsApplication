@@ -1,41 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/upload_time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="2H"
+        app:layout_constraintBottom_toTopOf="@id/article_title_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/article_title_text"/>
+        tools:text="2H" />
 
     <TextView
         android:id="@+id/article_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="200dp"
-        android:maxLines="4"
+        android:layout_marginBottom="8dp"
         android:ellipsize="marquee"
-        android:textStyle="bold"
+        android:maxWidth="250dp"
+        android:maxLines="4"
         android:textSize="16sp"
-        tools:text="Article Title Bla Bla Bla News Title Bla Bla Bla"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/upload_time_text"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        tools:text="Article Title Bla Bla Bla News Title Bla Bla Bla" />
 
     <ImageView
         android:id="@+id/article_image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="articleImage"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="articleImage" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

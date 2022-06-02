@@ -7,18 +7,23 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.newsapplication.R
 import com.example.newsapplication.models.Article
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 
 
-class NewsDescriptionFragment() : Fragment(R.layout.fragment_news_details) {
+class NewsDescriptionFragment : Fragment(R.layout.fragment_news_details) {
 
     private lateinit var articleImage: ImageView
     private lateinit var articleTitle: TextView
     private lateinit var articleProvider: TextView
     private lateinit var articleDescription: TextView
+    private lateinit var backButton: ConstraintLayout
 
     private lateinit var article: Article
 
@@ -37,6 +42,7 @@ class NewsDescriptionFragment() : Fragment(R.layout.fragment_news_details) {
         articleTitle = view.findViewById(R.id.article_title)
         articleProvider = view.findViewById(R.id.article_provider)
         articleDescription = view.findViewById(R.id.article_description)
+        backButton = view.findViewById(R.id.back_button)
 
         articleTitle.text = article.title
         articleProvider.text = article.source.name
@@ -46,6 +52,15 @@ class NewsDescriptionFragment() : Fragment(R.layout.fragment_news_details) {
                 Glide.with(it1).load(article.urlToImage).into(it)
             }
         }
+
+        val shapeAppearanceModel = ShapeAppearanceModel()
+            .toBuilder()
+            .setBottomRightCorner(CornerFamily.CUT, 32f)
+            .build()
+
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        backButton.background = shapeDrawable
+
 
         val fullArticleButton: Button = view.findViewById(R.id.full_article_button)
 
